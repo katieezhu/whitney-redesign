@@ -62,8 +62,13 @@ a {
 
 .main-menu a.active {
   opacity: 1;
-
   padding-bottom: 0.25rem;
+}
+
+.main-menu a:hover {
+  opacity: 1;
+  color: #fff;
+  transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 .nav-icons {
@@ -79,10 +84,10 @@ a {
   cursor: pointer;
 }
 
-.icon-btn:hover {
-    background-color: white;
-    color: black;
-    border-radius: 50%;
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+  transition: color 0.5s ease, background-color 0.5s ease; 
 }
 
 .divider {
@@ -91,9 +96,66 @@ a {
   margin: 0;
 }
 
+/* container 1 */
 h1 {
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 700;
   letter-spacing: 1px;
   margin-top: 6rem;
+}
+
+.hero {
+  padding: 4rem 1.5rem;
+  color: #fff;
+  background: #000;
+}
+
+.content1 {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.media1 img {
+  width: 100%;
+  height: auto;
+  max-width: 700px;
+}
+
+.text1 {
+  flex: 1;
+  max-width: 850px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-top: -1.5rem;
+}
+
+.text1 a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.btn1 {
+  display: inline-block;
+  margin-top: 1.5rem;
+  border: 1px solid #fff;
+  padding: 0.8rem 1.25rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.btn1:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .content1 {
+    flex-direction: column;
+  }
+
+  .h1 {
+    font-size: 2.5rem;
+  }
 }
