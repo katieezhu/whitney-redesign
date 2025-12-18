@@ -29,3 +29,11 @@ document
   .addEventListener("click", getRandomArtwork);
 
 getRandomArtwork();
+
+// hamburger menu toggle
+const toggleButton = document.querySelector(".menu-toggle");
+const mainMenu = document.querySelector(".main-menu");
+
+toggleButton.addEventListener("click", () => {
+  mainMenu.classList.toggle("open");
+});

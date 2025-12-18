@@ -39,6 +39,62 @@ a {
   margin-right: 1rem;
 }
 
+.main-menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  position: relative;
+}
+
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: black;
+  padding: 16px 0;
+  min-width: 220px;
+  list-style: none;
+  border-top: 1px solid #333;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 24px;
+  color: white;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.dropdown li a:hover {
+  color: #aaa;
+}
+
+.has-dropdown:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
 /* main */
 .main-nav {
   display: flex;
@@ -204,6 +260,17 @@ h2 {
   border: none;
   padding: 0.75rem 1.5rem;
   cursor: pointer;
+  margin-top: 60px;
+  padding: 12px 28px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  margin-top: -0.75rem;
 }
 
 #new-artwork:hover {
@@ -211,43 +278,25 @@ h2 {
 }
 
 #random-artwork {
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 500px;
   object-fit: contain;
   display: block;
-  margin: 3rem auto;
+  margin-top: -1rem;
+  margin-bottom: -0.5rem;
   background-color: #111;
 }
 
-#new-artwork {
-  margin-top: 60px;
-  padding: 12px 28px;
-
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  cursor: pointer;
-  transition: all 0.35s ease;
-}
-
-/* hover state */
 #new-artwork:hover {
   background: white;
   color: black;
 }
 
-/* focus / accessibility */
 #new-artwork:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
 }
 
-/* footer */
 .footer {
   background: #000;
   color: #fff;
@@ -260,7 +309,7 @@ h2 {
   margin: 2rem 0;
 }
 
-..footer-top {
+.footer-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -268,8 +317,16 @@ h2 {
 }
 
 .newsletter {
-  flex: 0 0 50%;
+  flex: 0 0 45%;
   max-width: 650px;
+}
+
+.footer-links {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 4rem;
+  margin-top: 6rem;
 }
 
 .newsletter h3 {
@@ -278,7 +335,7 @@ h2 {
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  margin-top: 0;
+  margin-top: 2rem;
   width: 100%;
   max-width: 650px;
 }
@@ -322,14 +379,6 @@ h2 {
   font-size: 1.8rem;
 } */
 
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
-  gap: 4rem;
-  align-items: start;
-  margin-top: 3.5rem;
-}
-
 .link-group h4 {
   text-transform: uppercase;
   font-size: 1.4rem;
@@ -361,7 +410,18 @@ h2 {
   text-decoration: underline;
 }
 
+.footer-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
 
+.footer-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
 /* gallery */
 h3 {
@@ -416,6 +476,23 @@ h3 {
 }
 
 /* responsive */
+
+/* naivigation */
+@media (max-width: 900px) {
+  .top-right {
+    display: none;
+  }
+
+  .top-bar {
+    justify-content: center;
+  }
+
+  .top-left {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+}
+
 /* container 1 */
 @media (max-width: 900px) {
   .content1 {
@@ -439,5 +516,63 @@ h3 {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+}
+
+/* responsive hamburger menu */
+@media (max-width: 900px) {
+  .main-nav {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-menu {
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    display: none;
+    border-top: 1px solid #333;
+  }
+
+  .main-menu.open {
+    display: flex;
+  }
+
+  .main-menu a {
+    font-size: 1.5rem;
+  }
+
+  .dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    padding-left: 1.5rem;
+    border: none;
+  }
+}
+
+/* footer */
+@media (max-width: 900px) {
+  .footer-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .footer-image {
+    margin-top: 3rem;
   }
 }
